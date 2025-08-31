@@ -9,5 +9,5 @@ import lombok.ToString;
 @ToString
 public class RatingDto {
     private Double rate;
-    private   Long rating;
+    private   Long count;
 }

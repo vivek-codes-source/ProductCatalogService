@@ -1,13 +1,12 @@
 package com.example.ProductCatalogServiceProxy.controllers;
 
 import com.example.ProductCatalogServiceProxy.Dto.ProductDto;
+import com.example.ProductCatalogServiceProxy.models.Categery;
 import com.example.ProductCatalogServiceProxy.models.Product;
 import com.example.ProductCatalogServiceProxy.services.IProductService;
-import com.example.ProductCatalogServiceProxy.services.ProductService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 
@@ -34,17 +33,38 @@ public class ProductController {
         return new ResponseEntity<>(product, HttpStatus.OK);
 
     } catch (Exception exception) {
-        return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+//        return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+          throw  exception;
     }
 
     }
     @PostMapping("/product")
     public Product createProduct( @RequestBody ProductDto productDto){
-return productService.createProduct(productDto);
+        Product product = getproduct(productDto);
+return productService.createProduct(product);
     }
-@PatchMapping("/product")
-    public String updateProduct( @RequestBody ProductDto productDto){
-        return "returning product"+productDto;
+@PatchMapping("/product/{id}")
+    public Product updateProduct (@PathVariable Long id, @RequestBody ProductDto productDto){
+   Product product = getproduct(productDto);
+   return productService.updateProduct(id, product);
+
+
+}
+
+
+private Product getproduct (ProductDto productDto ){
+    Product product = new Product();
+    product.setTitle(productDto.getTitle());
+    product.setDescription(productDto.getDescription());
+    product.setPrice(productDto.getPrice());
+    product.setImageUrl(productDto.getImage());
+
+    Categery categery = new Categery();
+    categery.setName(productDto.getCategory().getName());
+    product.setCategory(categery);
+//
+    product.setId(productDto.getId());
+    return product;
 }
 
 }

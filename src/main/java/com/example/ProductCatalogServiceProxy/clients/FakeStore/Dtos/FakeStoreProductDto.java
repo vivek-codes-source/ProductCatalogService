@@ -1,4 +1,4 @@
-package com.example.ProductCatalogServiceProxy.Dto;
+package com.example.ProductCatalogServiceProxy.clients.FakeStore.Dtos;
 
 import com.example.ProductCatalogServiceProxy.models.Categery;
 import lombok.Getter;
@@ -8,13 +8,13 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class ProductDto {
+public class FakeStoreProductDto {
     private Long  id;
     private String title;
     private String description;
     private Double price;
     private String image;
     private Categery category;
-    private RatingDto ratingDto;
+    private FakeStoreRatingDto fakeStoreRatingDto;
 
 }
