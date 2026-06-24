@@ -2,6 +2,7 @@ package com.example.ProductCatalogServiceProxy.services;
 
 import com.example.ProductCatalogServiceProxy.Dto.ProductDto;
 import com.example.ProductCatalogServiceProxy.models.Product;
+import org.apache.catalina.User;
 
 import java.util.List;
 
@@ -13,4 +14,8 @@ public interface IProductService {
 
 
     Product updateProduct(Long id,Product product);
+    public Product getProductDetail (Long userid, Long productid) ;
+
+
+
 }

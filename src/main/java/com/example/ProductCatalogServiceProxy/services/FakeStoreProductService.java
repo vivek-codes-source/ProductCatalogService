@@ -5,6 +5,7 @@ import com.example.ProductCatalogServiceProxy.clients.FakeStore.Dtos.FakeStoreRa
 import com.example.ProductCatalogServiceProxy.clients.FakeStore.client.FakeStoreApiClient;
 import com.example.ProductCatalogServiceProxy.models.Categery;
 import com.example.ProductCatalogServiceProxy.models.Product;
+import org.apache.catalina.User;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -74,6 +75,17 @@ public class FakeStoreProductService implements IProductService {
         product.setId(productDto.getId());
         return product;
     }
+
+
+
+    public Product getProductDetail (Long userid, Long productid) {
+
+        return null;
+    }
+
+
+
+
     private FakeStoreProductDto getFakeStoreProductDto(Product product) {
         FakeStoreProductDto fakeStoreProductDto = new FakeStoreProductDto();
         fakeStoreProductDto.setId(product.getId());

@@ -52,6 +52,16 @@ return productService.createProduct(product);
 }
 
 
+
+    @GetMapping("/{id1}/{id2}")
+    public Product getProductDetails(
+            @PathVariable Long id1,
+            @PathVariable Long id2) {
+
+        return productService.getProductDetail(id1,id2);
+    }
+
+
 private Product getproduct (ProductDto productDto ){
     Product product = new Product();
     product.setTitle(productDto.getTitle());
