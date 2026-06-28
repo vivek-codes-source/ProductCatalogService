@@ -1,13 +1,7 @@
 pipeline {
     agent any
 
-    stages {
-
-        stage('Checkout') {
-            steps {
-                git 'https://github.com/vivek-codes-source/ProductCatalogService'
-            }
-        }
+   
 
         stage('Build') {
             steps {
