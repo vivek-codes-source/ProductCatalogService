@@ -1,11 +1,17 @@
 pipeline {
-    agent {
-        docker {
-            image 'maven:3.9.6-eclipse-temurin-17'
-        }
-    }
+    agent any
 
     stages {
+
+        stage('Setup Maven') {
+            steps {
+                sh '''
+                apt-get update || true
+                apt-get install -y maven || true
+                mvn -v
+                '''
+            }
+        }
 
         stage('Checkout') {
             steps {
