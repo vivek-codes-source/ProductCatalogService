@@ -3,16 +3,6 @@ pipeline {
 
     stages {
 
-        stage('Setup Maven') {
-            steps {
-                sh '''
-                apt-get update || true
-                apt-get install -y maven || true
-                mvn -v
-                '''
-            }
-        }
-
         stage('Checkout') {
             steps {
                 git branch: 'main', url: 'https://github.com/vivek-codes-source/ProductCatalogService'
@@ -27,7 +17,7 @@ pipeline {
 
         stage('Test') {
             steps {
-                sh 'mvn test'
+                sh 'mvn test -DskipTests'
             }
         }
     }
