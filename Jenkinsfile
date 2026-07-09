@@ -15,9 +15,9 @@ pipeline {
             }
         }
 
-        stage('Test') {
+        stage('Docker Build') {
             steps {
-                sh 'mvn test -DskipTests'
+                sh 'docker build -t productcatalogserviceproxy:v2 .'
             }
         }
     }
