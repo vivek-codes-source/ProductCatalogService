@@ -2,11 +2,10 @@ FROM jenkins/jenkins:lts-jdk17
 
 USER root
 
-RUN apt-get update
-RUN apt-get install -y maven
-RUN apt-get install -y docker.io
-
-RUN mvn --version
-RUN docker --version
+RUN apt-get update && \
+    apt-get install -y \
+        maven \
+        docker.io && \
+    rm -rf /var/lib/apt/lists/*
 
 USER jenkins
