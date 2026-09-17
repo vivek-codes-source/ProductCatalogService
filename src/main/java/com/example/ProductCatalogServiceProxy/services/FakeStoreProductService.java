@@ -14,7 +14,7 @@ import org.springframework.web.client.RestTemplate;
 import java.util.ArrayList;
 import java.util.List;
 
-
+@Service
 public class FakeStoreProductService implements IProductService {
     private RestTemplateBuilder restTemplateBuilder;
     FakeStoreApiClient fakeStoreApiClient;
@@ -69,7 +69,7 @@ public class FakeStoreProductService implements IProductService {
         product.setImageUrl(productDto.getImage());
 
         Categery categery = new Categery();
-        categery.setName(productDto.getCategory().getName());
+        categery.setName(productDto.getCategory());
         product.setCategory(categery);
 //
         product.setId(productDto.getId());
@@ -89,7 +89,7 @@ public class FakeStoreProductService implements IProductService {
     private FakeStoreProductDto getFakeStoreProductDto(Product product) {
         FakeStoreProductDto fakeStoreProductDto = new FakeStoreProductDto();
         fakeStoreProductDto.setId(product.getId());
-        fakeStoreProductDto.setCategory(product.getCategory());
+        fakeStoreProductDto.setCategory(product.getCategory().getName());
         fakeStoreProductDto.setImage(product.getImageUrl());
         fakeStoreProductDto.setDescription(product.getDescription());
         fakeStoreProductDto.setPrice(product.getPrice());

@@ -69,9 +69,9 @@ private Product getproduct (ProductDto productDto ){
     product.setPrice(productDto.getPrice());
     product.setImageUrl(productDto.getImage());
 
-    Categery categery = new Categery();
-    categery.setName(productDto.getCategory().getName());
-    product.setCategory(categery);
+//    Categery categery = new Categery();
+//    categery.setName(productDto.getCategory());
+    product.setCategory(product.getCategory());
 //
     product.setId(productDto.getId());
     return product;
