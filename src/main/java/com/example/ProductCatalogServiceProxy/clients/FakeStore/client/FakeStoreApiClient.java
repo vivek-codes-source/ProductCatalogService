@@ -10,6 +10,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.client.RestTemplate;
+
+import java.util.Arrays;
+import java.util.List;
+
 @Component
 public class FakeStoreApiClient {
     RestTemplateBuilder restTemplateBuilder;
@@ -28,5 +32,19 @@ public class FakeStoreApiClient {
         return fakeStoreProductDtoResponseEntity.getBody();
     }
 
+    public List<FakeStoreProductDto> getAllProducts() {
 
+        RestTemplate restTemplate = restTemplateBuilder.build();
+
+        FakeStoreProductDto[] products =
+                restTemplate.getForObject(
+                        "http://fakestoreapi.com/products",
+                        FakeStoreProductDto[].class
+                );
+
+        return products != null
+                ? Arrays.asList(products)
+                : List.of();
+    }
 }
+
